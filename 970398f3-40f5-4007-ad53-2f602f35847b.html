@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Once Human</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('970398f3-40f5-4007-ad53-2f602f35847b/442b06c2-07bd-43ca-9c8d-c7b8647089c2.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src=""/> Once Human</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="970398f3-40f5-4007-ad53-2f602f35847b/5f1c4860-7961-4b40-984f-f6971fc19a06.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_descending_name_ascending.html#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_descending_name_ascending.html#quicklink-2024/12/1">2024/12/1</a> 19:50:48</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_descending_name_ascending.html#quicklink-2024/12/1">2024/12/1</a> 20:02:36</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="default%20combobox%20quicklinks_completionstatus_ascending_name_ascending.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20combobox%20quicklinks_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_descending_name_ascending.html#quicklink-2024/7/9">2024/7/9</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_descending_name_ascending.html#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_descending_name_ascending.html#quicklink-84">84</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_descending_name_ascending.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Shooter">Shooter</a><br/><a href="default%20combobox%20quicklinks_genre_ascending_name_ascending.html#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_ascending_name_ascending.html#quicklink-Starry Studio">Starry Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_ascending_name_ascending.html#quicklink-Starry Studio">Starry Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Multiplayer">Multiplayer</a><br/><a href="default%20combobox%20quicklinks_feature_ascending_name_ascending.html#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.oncehuman.game/" target="_blank">Official</a><br/><a href="https://www.youtube.com/channel/UCgUb8QkT-DHF62tR2n7TPDQ" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/OnceHuman-108731781483917" target="_blank">Facebook</a><br/><a href="https://twitter.com/OnceHuman_" target="_blank">Twitter</a><br/><a href="https://discord.gg/oncehuman" target="_blank">Discord</a><br/><a href="https://store.steampowered.com/app/2139460" target="_blank">Steam</a><br/><a href="https://wikipedia.org/wiki/Main_Page" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/game/Once%20Human" target="_blank">Twitch</a><br/><a href="https://play.google.com/store/apps/details?id=com.h73.jhqyna" target="_blank">Android</a><br/><a href="https://www.reddit.com/r/OnceHumanOfficial/" target="_blank">Reddit</a><br/><a href="https://store.epicgames.com/en-US/p/once-human-b5c576" target="_blank">Epic</a><br/><a href="https://apps.apple.com/us/app/once-human/id1573906210" target="_blank">iPhone</a><br/><a href="https://apps.apple.com/us/app/once-human/id1573906210?platform=ipad" target="_blank">iPad</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag"><strong>【全新剧本「雪国人生」】</strong></h2><p class="bb_paragraph">首个大型极寒多人生存剧本上线，开放雪原、火山全新大世界地图。新增“温度”机制让末日求生更为惊险刺激，快与队友合作升级温控塔，克服愈发严峻的极端天气困境吧！还有全新副本、异常物、武器等更多新内容等你体验。绝境严寒，星火成炬！</p><p class="bb_paragraph"></p><p class="bb_paragraph">浩劫改变了星球上的一切，人类，动物，植物……所有生命体都被神秘的外来物质——“星尘”所侵入。作为一个“超越者”，你对星尘的抵御能力远甚常人，但这并不意味你是安全的。在末日中你可以作为独狼求生，或者联合其他人一同战斗，建造，探索。当世界陷入了末日的混沌之时，你是我们最后的希望。</p><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>星球陨落，你是荒野中的求生者</strong></h2><p class="bb_paragraph">你在一片荒野中醒来，饥渴难耐，周遭的瓜果与流水触手可及，却隐现诡异的蓝光——这些被星尘污染的饮食不仅会损害健康，还会使你的理智逐渐崩溃……更多的危险蛰伏在暗处，等待着你力竭倒地后扑上来将你分食。超越者，别让它们如愿。</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2139460/extras/GIF1-开放世界_末日.gif?t=1732272303" /></p><h2 class="bb_tag"><strong>银之门洞开，你是挑战异位面生物的战士</strong></h2><p class="bb_paragraph">星尘浩劫滋生出难以计量的畸变体，这些恐怖的怪物占据了几乎整个世界。必须从它们手中收复人类的故土！虽然畸变体一直将人类视作猎物，但现在，超越者，这世界有了你…该换我们成为猎人了。</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2139460/extras/GIF2-PVE.gif?t=1732272303" /></p><h2 class="bb_tag"><strong>火力是末日的唯一真理，你是运用枪械的大师</strong></h2><p class="bb_paragraph">7大枪械分类，超100种枪械蓝图等待你收集打造，每一把武器都能给你带来全新体验。要是现成的武器无法满足你的战斗欲望，你还可以使用配件来自由改造枪械，并组建你的专属枪械天赋，让每一场遭遇战都成为你多变战术的检验场！</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2139460/extras/GIF3-枪械武器装备（中）.gif?t=1732272303" /></p><h2 class="bb_tag"><strong>文明倾颓，你是人类文明的重铸者</strong></h2><p class="bb_paragraph">在荒野上，任何一个位置，建造你专属的家园吧！你可以建造一座极具生存主义风格的城寨：把一切你收集的好东西都塞到金属墙壁后面，再在外围布满防御设施；或者你也可以在确保安全的前提下，建造一所功能齐全的大型生存点：拥有露台、厨房、车库……等的大房子！</p><p class="bb_paragraph"> </p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2139460/extras/GIF4-基地建设.gif?t=1732272303" /></p><h2 class="bb_tag"><strong>往日不再，你是世界沦陷真相的探寻者</strong></h2><p class="bb_paragraph">在探寻浩劫真相的旅途中，你永远不是孤身一人。荒野上存在着大大小小的幸存者势力，有的充满了暴力和敌意，有些则愿意谨慎地与外来者进行接触。前往幸存者的据点去深入了解他们的故事吧——是在解决威胁当地的畸变体后不留姓名地离去？还是讨价还价获得你应得的报酬？选择权在你手上。</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2139460/extras/GIF5-大型多人在线.gif?t=1732272303" /></p><p class="bb_paragraph"></p>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
