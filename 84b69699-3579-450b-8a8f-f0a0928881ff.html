@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Marvel Rivals</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('84b69699-3579-450b-8a8f-f0a0928881ff/9f5bf9dc-d26b-4a4e-888d-366af1e9117b.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="84b69699-3579-450b-8a8f-f0a0928881ff/16592acc-c449-472c-a777-7ee25d4d74fb.ico"/> Marvel Rivals</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>详情</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="84b69699-3579-450b-8a8f-f0a0928881ff/31ab5bc7-2a9e-441d-811b-789a27ece6e8.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>游玩时间</TD>
+								<TD>未游玩</TD>
+							</TR>
+							<TR>
+								<TD>上次活动</TD>
+								<TD><a href="default%20combobox%20quicklinks_lastactivity_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-永不">永不</a> </TD>
+							</TR>
+							<TR>
+								<TD>已添加</TD>
+								<TD><a href="default%20combobox%20quicklinks_added_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2025/1/12">2025/1/12</a> 0:05:47</TD>
+							</TR>
+							<TR>
+								<TD>已修改</TD>
+								<TD><a href="default%20combobox%20quicklinks_modified_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2025/1/12">2025/1/12</a> 0:06:45</TD>
+							</TR>
+							<TR>
+								<TD>完成状态</TD>
+								<TD><a href="default%20combobox%20quicklinks_completionstatus_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>库</TD>
+								<TD><a href="default%20combobox%20quicklinks_library_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>来源</TD>
+								<TD><a href="default%20combobox%20quicklinks_source_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>平台</TD>
+								<TD><a href="default%20combobox%20quicklinks_platform_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发布日期</TD>
+								<TD><a href="default%20combobox%20quicklinks_releasedate_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2024/12/6">2024/12/6</a> </TD>
+							</TR>
+							<TR>
+								<TD>社区评分</TD>
+								<TD><a href="default%20combobox%20quicklinks_communityscore_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-76">76</a></TD>
+							</TR>
+							<TR>
+								<TD>媒体评分</TD>
+								<TD><a href="default%20combobox%20quicklinks_criticscore_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>用户评分</TD>
+								<TD><a href="default%20combobox%20quicklinks_userscore_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>流派</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>开发者</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-NetEase Games">NetEase Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发行机构</TD>
+								<TD><a href="default%20combobox%20quicklinks_publisher_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-NetEase Games">NetEase Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>功能特色</TD>
+								<TD><a href="default%20combobox%20quicklinks_feature_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Co-Operative">Co-Operative</a><br/><a href="default%20combobox%20quicklinks_feature_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>链接</TD>
+								<TD><a href="https://store.steampowered.com/app/2767030/Marvel_Rivals/" target="_blank">Steam</a><br/><a href="https://store.epicgames.com/es-ES/p/marvel-rivals-182004" target="_blank">Epic</a><br/><a href="https://www.marvelrivals.com/" target="_blank">Official</a><br/><a href="https://www.youtube.com/@MarvelRivals" target="_blank">YouTube</a><br/><a href="https://twitter.com/MarvelRivals" target="_blank">Twitter</a><br/><a href="https://www.facebook.com/marvelrivals" target="_blank">Facebook</a><br/><a href="https://www.instagram.com/marvelrivals/" target="_blank">Instagram</a><br/><a href="https://discord.gg/invite/marvelrivals" target="_blank">Discord</a><br/><a href="https://reddit.com/r/marvelrivals/" target="_blank">Reddit</a><br/><a href="https://en.wikipedia.org/wiki/Marvel_Rivals" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/category/marvel-rivals" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>描述</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/extras/JUSTICE-0712-1.gif?t=1736492430" /></p><p class="bb_paragraph">《漫威争锋》是一款超级英雄团队PVP射击游戏。你可以从丰富多样的超级英雄和超级反派阵容中，挑选心仪的角色组成全明星队伍，在漫威多元宇宙各种可破坏的地图上，利用独特的超能力进行精彩激战。 </p><p class="bb_paragraph"></p><h2 class="bb_tag">漫威正版授权，首款超级英雄团队PVP射击大作</h2><p class="bb_paragraph">你可以从复仇者联盟、银河护卫队、X战警等漫威多元宇宙中的诸多团队中，选择脍炙人口、别具一格的漫威超级英雄或反派进行战斗，如黑豹、蜘蛛侠、万磁王和魔剑客等经典角色。</p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/extras/1.A_Deep_and_vaired.gif?t=1736492430" /></p><h2 class="bb_tag">6v6快节奏刺激对战，战局瞬息万变</h2><p class="bb_paragraph">错综复杂的战场设计，节奏紧张的游戏体验，变幻莫测的战斗局势，你在《漫威争锋》中永远不会感到无聊！成为拥有惊人能力的超级英雄或超级反派，利用你的力量，瞬间就能将战场变得趣味横生。化身为你最爱的超级英雄踏上战场，享受一场酣畅淋漓的决斗吧！</p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/extras/2.fast_and_fun_6V6.gif?t=1736492430" /></p><h2 class="bb_tag">经典英雄独特技能，团战配合协作无间</h2><p class="bb_paragraph">英雄间的羁绊将触发连携技能，多样协作赋予战术更多可能：你可化身为火箭浣熊站在格鲁特背上，对敌人进行猛烈进攻；或化身为浩克释放伽马能量为钢铁侠的盔甲充能，超能力激发巨大战斗力，赢得战场先机......还有更多精彩等着你去探索！</p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/extras/4.creative_environment_destruction.gif?t=1736492430" /></p><h2 class="bb_tag">地图场景可破坏，颠覆既定战场规则</h2><p class="bb_paragraph">战场不再死气沉沉，它将成为制胜武器！你将在经典的漫威世界场景中战斗，穿行于千变万化的战场之中，使用超能力改变环境，重新塑造地形，并在战场上创造战略优势；你还可以寻找掩体躲避攻击，或是将现场物品化作临时武器反击敌人。在这里，你有无数种空间场景战术来赢得胜利！</p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/extras/3.dynamic_hero.gif?t=1736492430" /></p><h2 class="bb_tag">不断扩张的漫威宇宙，丰富的赛季更新</h2><p class="bb_paragraph">漫威多元宇宙也为《漫威争锋》带来了无尽的可能性。故事将会跟随赛季逐步推进，每个赛季更新都会有新的超级英雄或反派加入战场，并引入更多充满挑战性的地图。你可以在各种玩法策略中运用每个赛季解锁的新内容，体验到惊险刺激的战斗和无限可能性！</p><p class="bb_paragraph"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2767030/extras/5.continually_evolving_universe.gif?t=1736492430" /></p>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
